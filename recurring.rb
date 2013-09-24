@@ -1,19 +1,25 @@
+# Used to calculate interst in recurring depost
+# Interest : in percentage
+# Term : in months
 class RecuringDeposit
   def initialize amount, interest, term
     @amount = amount
     @interest = interest/100.0
     @term = term
   end
-
+  
+  # Total amount one would get deposit + interest 
   def recuring iteration = @term
     return (@amount + @amount*@interest) if iteration == 0
     (@amount + recuring(iteration-1))*@interest + @amount*iteration
   end
 
+  # Total interest
   def earning
     recuring - @amount*@term
   end
 
+  # %return one would get
   def return
     earning/(@amount*@term)
   end
